@@ -11,5 +11,11 @@
 
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.264807" />
+    <PackageReference Include="Refit" Version="4.6.99" />
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Models\" />
+    <Folder Include="Consts\" />
+  </ItemGroup>
   </ItemGroup>
 </Project>
