@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using MovieTime.Services;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
-namespace MovieTime
+namespace MovieTime.Pages
 {
-    public partial class MainPage : ContentPage
+    public partial class MovieListPage : ContentPage
     {
-        public MainPage()
+        public MovieListPage()
         {
             InitializeComponent();
         }

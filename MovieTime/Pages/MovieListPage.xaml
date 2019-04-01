@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:MovieTime.Views"
+    xmlns:converters="clr-namespace:MovieTime.Converters"
+    xmlns:behaviors="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+    x:Class="MovieTime.Pages.MovieListPage"
+    Title="MovieTime">
+    <Grid>
+        <ListView
+            ItemsSource="{Binding Movies}"
+            IsVisible="{Binding IsLoading, Converter={converters:InverseBoolConverter}}"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsRefreshing}"
+            RefreshCommand="{Binding FetchMoviesCommand}"
+            SelectionMode="None"
+            HasUnevenRows="true"
+            CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <views:MovieViewCell />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <behaviors:EventToCommandBehavior
+                    EventName="ItemTapped"
+                    Command="{Binding SelectMovieCommand}"
+                    EventArgsPropertyPath="Item" />
+                <behaviors:EventToCommandBehavior
+                    EventName="ItemAppearing"
+                    Command="{Binding FetchMoviesNextPageCommand}"
+                    EventArgsPropertyPath="Item" />
+            </ListView.Behaviors>
+        </ListView>
+        <ActivityIndicator
+            IsRunning="{Binding IsLoading}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+    </Grid>
+</ContentPage>
