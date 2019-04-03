@@ -165,5 +165,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\poster_placeholder.png" />
+    <BundleResource Include="Resources\poster_placeholder_large.png" />
   </ItemGroup>
 </Project>

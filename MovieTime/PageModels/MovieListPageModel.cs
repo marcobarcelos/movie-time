@@ -43,7 +43,7 @@ namespace MovieTime.PageModels
 
         void SelectMovie(Movie movie)
         {
-            throw new NotImplementedException();
+            CoreMethods?.PushPageModel<MovieDetailPageModel>(movie);
         }
 
         void ClearMovies()
