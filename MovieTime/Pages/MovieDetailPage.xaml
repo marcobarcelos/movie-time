@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:converters="clr-namespace:MovieTime.Converters"
+    x:Class="MovieTime.Pages.MovieDetailPage"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <StackLayout IsVisible="{Binding IsLoading, Converter={converters:InverseBoolConverter}}" Padding="20">
+                    <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+                        LoadingPlaceholder="poster_placeholder_large.png"
+                        ErrorPlaceholder="poster_placeholder_large.png"
+                        Source="{Binding Detail.PosterPath, StringFormat='http://image.tmdb.org/t/p/w300{0}'}" />
+                    
+                    <Label Text="Title" FontAttributes="Bold" />
+                    <Label Text="{Binding Detail.Title}" />
+                    
+                    <Label Text="Overview" FontAttributes="Bold" />
+                    <Label Text="{Binding Detail.Overview}" />
+                    
+                    <Label Text="Genres" FontAttributes="Bold" />
+                    <Label Text="{Binding Genres}" />
+                    
+                    <Label Text="Rating" FontAttributes="Bold" />
+                    <Label Text="{Binding Detail.VoteAverage, StringFormat='★ {0}'}" />
+                    
+                    <Label Text="Release Date" FontAttributes="Bold" />
+                    <Label Text="{Binding Detail.ReleaseDate}" />
+                </StackLayout>
+            </ScrollView>
+            <ActivityIndicator IsRunning="{Binding IsLoading}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

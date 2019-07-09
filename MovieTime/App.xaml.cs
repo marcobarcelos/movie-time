@@ -1,4 +1,6 @@
 ﻿using System;
+using FreshMvvm;
+using MovieTime.PageModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +13,8 @@ namespace MovieTime
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            var page = FreshPageModelResolver.ResolvePageModel<MovieListPageModel>();
+            MainPage = new FreshNavigationContainer(page);
         }
 
         protected override void OnStart()

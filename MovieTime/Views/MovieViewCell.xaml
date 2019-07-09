@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="MovieTime.Views.MovieViewCell">
+    <ContentView.Content>
+        <StackLayout Orientation="Horizontal">
+            <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+                LoadingPlaceholder="poster_placeholder.png"
+                ErrorPlaceholder="poster_placeholder.png"
+                Source="{Binding PosterPath, StringFormat='http://image.tmdb.org/t/p/w185{0}'}" />
+            <StackLayout Orientation="Vertical" Padding="5" HorizontalOptions="Start" VerticalOptions="Center">
+                <Label Text="{Binding Title}" FontAttributes="Bold"></Label>
+                <Label Text="{Binding VoteAverage, StringFormat='★ {0}'}"></Label>
+                <Label Text="{Binding GenreDescription}" FontSize="11"></Label>
+                <Label Text="{Binding ReleaseDate}" FontAttributes="Italic" FontSize="11"></Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
